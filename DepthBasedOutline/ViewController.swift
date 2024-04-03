@@ -16,7 +16,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     @IBOutlet weak var blueSlider: UISlider!
     @IBAction func blueSliderChanged(_ sender: Any) {
-        setColor()
+        setValues()
     }
     
     
@@ -35,21 +35,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         let technique = SCNTechnique(dictionary: MyTechnique.techniqueDictionary)
         sceneView.technique = technique
         
-        setColor()
+        setValues()
     }
     
-    /// - Tag: updateAtTime
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        
-    }
-    
-    /// - Tag: setColor
-    func setColor() {
+
+    func setValues() {
         DispatchQueue.main.async { [self] in
-//            let color = SCNVector3(blueSlider.value, blueSlider.value, blueSlider.value)
-//            sceneView.technique?.setValue(color, forKey: "color_weights_symbol")
-//
-//            let scale = 4
+
             let scale = blueSlider.value
             let viewSize = sceneView.currentViewport
             sceneView.technique?.setValue(scale, forKey: "scale_symbols")
